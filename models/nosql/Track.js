@@ -48,6 +48,6 @@ const TrackSchema = new mongoose.Schema(
         versionKey: false, //TO AVOID THE v0 in every insert
     }
 );
-TrackSchema.plugin(mongooseDelete, {overrideMethods: 'all'});
+TrackSchema.plugin(mongooseDelete, {overrideMethods: 'all'}); //PARA SOFTDELETE
 
 module.exports = mongoose.model('Track', TrackSchema);

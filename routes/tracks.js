@@ -15,7 +15,7 @@ router.get('/',authMiddleware, getItems);
 /**
  * Crear item
  */
-router.post('/',authMiddleware,  checkRolMiddleware(['admin']), validatorCreateItem, createItem); //  PARA OBTENER SOLO LOS DEL ROLE DE ADMINISTrADOR
+router.post('/',authMiddleware, validatorCreateItem, createItem); //  PARA OBTENER SOLO LOS DEL ROLE DE ADMINISTrADOR
 
 //router.post('/',authMiddleware,  checkRolMiddleware(['user']), validatorCreateItem, createItem);// PARA PODER OBTENER LOS DEL ROLE USER
 

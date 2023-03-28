@@ -25,6 +25,7 @@ const registerController = async(req, res) => {
         
         res.send({data});
     } catch (error) {
+        console.log(error)
         handleHttpError(res, 'ERROR EN EL REGISTER CONTROLLER')
     }
 }
@@ -37,7 +38,8 @@ const registerController = async(req, res) => {
 const loginController = async(req, res) => {
     try {
         req= matchedData(req);
-        const user = await userModel.findOne({email:req.email}).select('password name role _id'); // para que tambien nos traiga el password solo en esta ocasion
+        const user = await userModel.findOne({email:req.email})// para que tambien nos traiga el password solo en esta ocasion
+        //.select('password name role _id'); QUITAMOS DE AQUI EL SELECT
         if(!user) {
             handleHttpError(res, 'USER DOES NOT EXIST', 404)
             return;

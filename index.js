@@ -4,10 +4,15 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const morganBody = require('morgan-body');
-
+const ENGINE_DB = process.env.ENGINE_DB;
+const {sequelize, dbConnectPostgres} = require('./config/mysql');
 //INITIALIZATIONS
-require('./config/database');
-const loggerStream = require('./utils/handleLogger');
+if(ENGINE_DB=="nosql"){
+    require('./config/database');
+}else{
+    dbConnectPostgres();
+}
+
 //SETINGS
 
 const port = process.env.PORT || 3000;

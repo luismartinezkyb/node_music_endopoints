@@ -31,6 +31,7 @@ const createItem = async(req, res)=>{
         const data = await trackModel.create(body);
         res.send({data});
     } catch (error) {
+        console.log(error)
         handleHttpError(res, "ERROR EN INSERT ITEM") //estandarizamos el uso y manejo de erroes
     }
 }
