@@ -7,9 +7,10 @@ const handleHttpError = require('../utils/handleError');
 const getItems= async(req, res)=>{
     try {
         const {user} = req;
-        const data = await trackModel.find({});
+        const data = await trackModel.findAllData({});
         res.send({data, user});
     } catch (error) {
+        console.log(error)
         handleHttpError(res, "ERROR EN GET ITEMS")
     }
 }
@@ -17,10 +18,10 @@ const getItem= async(req, res)=>{
     try {
         req = matchedData(req);
         const {id} = req;
-        const data = await trackModel.findById(id);
+        const data = await trackModel.findOneData(id);
         res.send({data});// we need this {} to send a POJO or passing it through a JSON.stringify()
     } catch (error) {
-        
+        console.log(error)
         handleHttpError(res, "ERROR GET ITEM") //estandarizamos el uso y manejo de erroes
     }
 }
